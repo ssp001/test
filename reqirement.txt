@@ -1,0 +1,7 @@
+pyresilience
+agno
+fastapi[standard]
+sqlalchemy
+ddgs
+Groq
+openai
