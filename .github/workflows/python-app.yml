@@ -26,6 +26,9 @@ jobs:
     - name: Install dependencies
       run: |
         pip install uv
+        uv init
+        uv venv
+        .venv/Scripts/activate
         uv add -r reqirement.txt
     - name: Test with pytest
       run: |
