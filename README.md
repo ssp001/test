@@ -13,6 +13,7 @@ sqlalchemy
 ddgs
 Groq
 openai
+pytest
 ```
 
 # Folder strucher 

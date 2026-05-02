@@ -5,3 +5,5 @@ sqlalchemy
 ddgs
 Groq
 openai
+pytest
+pytest-asyncio

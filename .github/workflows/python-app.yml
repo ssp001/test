@@ -6,8 +6,6 @@ name: Python application
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 permissions:
   contents: read
@@ -18,18 +16,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.13
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.13"
-    - name: Install dependencies
-      run: |
-        pip install uv
-        uv init
-        uv venv
-        .venv/Scripts/activate
-        uv add -r reqirement.txt
-    - name: Test with pytest
-      run: |
-        uv run pytest
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.13"
+      - name: Install dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install reqirement.txt
+      - name: test application with pytest
+        run: pytest
+
+      - name: run the application
+        run: fastapi dev app\api\api_endpoint.py

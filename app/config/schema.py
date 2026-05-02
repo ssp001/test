@@ -1,20 +1,17 @@
-from dataclasses import dataclass
-from pydantic import Field
-from typing import List
+import uuid
+from pydantic import BaseModel
 
 
-@dataclass
-class UserSchema:
-    user_id: str = Field(str)
-    query: str = Field(str)
+class UserSchema(BaseModel):
+    user_id: uuid.UUID
+    query: str
 
 
-@dataclass
-class AgentSchema:
-    respones: List[str] = Field(str)
+class AgentSchema(BaseModel):
+    user_id: uuid.UUID
+    respones: str
 
 
-@dataclass
 class AgentConfig:
     model_name = "llama-3.3-70b-versatile"
     suppoet_model = "llama-3.1-8b-instant"

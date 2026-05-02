@@ -1,6 +1,5 @@
-def main():
-    print("Hello from test!")
-
-
-if __name__ == "__main__":
-    main()
+query = "hellow"
+if not isinstance(query, str):
+    print("this avrriable is not string type")
+else:
+    print("this is string type")
