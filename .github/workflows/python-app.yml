@@ -30,9 +30,14 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           pip install -r reqirement.txt
+          pip install --upgrade pip
 
       - name: test application with pytest
-        run: pytest
+        run: |
+          source .venv/bin/activate
+          pytest
 
       - name: run the application
-        run: fastapi dev app\api\api_endpoint.py
+        run: |
+          source .venv/bin/activate
+          fastapi dev app\api\api_endpoint.py
