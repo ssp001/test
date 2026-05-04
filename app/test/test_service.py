@@ -42,7 +42,7 @@ async def test_tutor_endpoint_query_test():
         os.getenv("URL"),
         params={"query": "hello"}
     ) as response:
-        async for text in response.iter_text():
+        for text in response.iter_text():
             chunk.append(text)
 
     assert len(chunk) > 0
