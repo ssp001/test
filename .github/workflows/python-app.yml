@@ -55,4 +55,4 @@ jobs:
       - name: Bulid and push to docker hub
         run: |
           docker build -t ${{secrets.DOCKERHUB_USERNAME}}/tutor-api .
-          docker psuh -t ${{secrets.DOCKERHUB_USERNAME}} /tutor-api .
+          docker push -t ${{secrets.DOCKERHUB_USERNAME}} /tutor-api .
