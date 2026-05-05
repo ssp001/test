@@ -54,5 +54,5 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Bulid and push to docker hub
         run: |
-          docker build -t ${{secrets.DOCKERHUB_USERNAME}}/tutor-api .
-          docker push ${{secrets.DOCKERHUB_USERNAME}}/tutor-api
+          docker build -t ${{secrets.DOCKERHUB_USERNAME}}/tutor-api:latest -f docker/dockerfile
+          docker push ${{secrets.DOCKERHUB_USERNAME}}/tutor-api 
