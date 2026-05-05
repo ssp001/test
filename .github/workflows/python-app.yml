@@ -1,6 +1,5 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
 name: Python application
 
 env:
@@ -54,5 +53,5 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Bulid and push to docker hub
         run: |
-          docker build -t ${{secrets.DOCKERHUB_USERNAME}}/tutor-api:latest -f docker/dockerfile
+          docker build -t ${{secrets.DOCKERHUB_USERNAME}}/tutor-api:latest -f docker/dockerfile .
           docker push ${{secrets.DOCKERHUB_USERNAME}}/tutor-api 
