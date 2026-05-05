@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir -r reqirement.txt
 
 COPY . .
 
-CMD ["fastapi","run","app/api/api_endpoint.py"]
+CMD ["uvicorn", "app.api.api_endpoint:app"]

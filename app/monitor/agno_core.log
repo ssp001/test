@@ -690,3 +690,5 @@ AttributeError: 'str' object has no attribute 'query'
 2026-05-05 12:55:44,877 - app.utils.logger - INFO - agent has incilized succsfully
 2026-05-05 12:56:38,115 - app.utils.logger - INFO - agent has incilized succsfully
 2026-05-05 12:57:27,103 - app.utils.logger - INFO - agent has incilized succsfully
+2026-05-05 14:40:10,211 - app.utils.logger - INFO - agent has incilized succsfully
+2026-05-05 14:46:05,266 - app.utils.logger - INFO - agent has incilized succsfully

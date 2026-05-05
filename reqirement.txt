@@ -9,3 +9,4 @@ pytest
 pytest-asyncio
 streamlit
 slowapi
+prometheus-client
