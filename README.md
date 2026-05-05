@@ -41,5 +41,9 @@ utils
 fastapi dev app\api\api_endpoint.py
 ```
 
+# monitoring
+
+- i have added monitoring for this project using grafana and promentues
+
 
 
