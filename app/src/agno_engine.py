@@ -3,11 +3,12 @@
 import os
 
 from app.core.agentabstract import AgentAbstract
-
 from app.config.schema import AgentConfig, UserSchema, AgentSchema
 
 from typing import AsyncGenerator
 from app.utils.logger import _logger_method
+from app.utils.custome import AiTimeoutError, LogicError, AiUnavalabileError
+
 from pyresilience import resilient, RetryConfig, CircuitBreakerConfig, TimeoutConfig
 
 from dotenv import load_dotenv
@@ -30,7 +31,7 @@ load_dotenv()
     retry=RetryConfig(max_attempts=5, delay=5.9),
     circuit_breaker=CircuitBreakerConfig(
         failure_threshold=5, recovery_timeout=50),
-    timeout=TimeoutConfig(seconds=7, per_attempt=12)
+    timeout=TimeoutConfig(seconds=20, per_attempt=True)
 )
 class AgnoClient(AgentAbstract):
     """
@@ -51,7 +52,6 @@ class AgnoClient(AgentAbstract):
                    ],
             stream=True,
             description="You are a patient tutor. Track student progress in memory and explain step-by-step.",
-
         )
         logger.info("agent has incilized succsfully")
 
@@ -67,14 +67,15 @@ class AgnoClient(AgentAbstract):
         except AgnoError as error:
             logger.exception(
                 f"sorry an exception occured{str(error)}")
-            raise RuntimeError("an error occure while runtime") from error
+            raise AiUnavalabileError(
+                "an error occure while runtime") from error
 
         except TimeoutError as error:
             logger.exception(
                 "sorry agent rech timeout server is in high pressser")
-            raise RuntimeError("ai request time out sorry") from error
+            raise AiTimeoutError("ai request time out sorry") from error
 
         except AttributeError as error:
             logger.exception(
                 f"sorry an exception occured{str(error)}")
-            raise RuntimeError("an error occure while runtime") from error
+            raise LogicError("an error occure while runtime") from error

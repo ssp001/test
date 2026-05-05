@@ -3,6 +3,10 @@ import sys
 
 
 def _logger_method(file_handeler) -> logging.Logger:
+    """
+    args: file handeler
+    return:-> logging.logger
+    """
 
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)

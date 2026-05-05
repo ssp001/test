@@ -1,9 +1,7 @@
 from app.core.agentabstract import AgentAbstract, AsyncGenerator
 from app.config.schema import UserSchema, AgentSchema
 
-
-from fastapi import HTTPException
-import json
+from app.utils.custome import AiTimeoutError, AiUnavalabileError, LogicError
 
 
 class AgentService:
@@ -14,7 +12,10 @@ class AgentService:
         try:
             async for chunk in self.client.run_agent(user):
                 yield chunk
-        except TimeoutError as error:
-            raise RuntimeError("sorry user request timeout") from error
-        except HTTPException as error:
-            raise RuntimeError("sorry user request failiure") from error
+        except AiTimeoutError as error:
+            raise ("sorry user request timeout") from error
+        except AiUnavalabileError as error:
+            raise (
+                "sorry user request failiure ai unavalaivle for the moment") from error
+        except LogicError as error:
+            raise ("there is a lociv error in the server side")

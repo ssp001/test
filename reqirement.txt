@@ -7,3 +7,5 @@ Groq
 openai
 pytest
 pytest-asyncio
+streamlit
+slowapi
