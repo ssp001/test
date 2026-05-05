@@ -1,0 +1,11 @@
+FROM python:3.13-alpine
+
+WORKDIR /app
+
+COPY reqirement.txt .
+
+RUN pip install --no-cache-dir -r reqirement.txt
+
+COPY . .
+
+CMD ["fastapi","run","app/api/api_endpoint.py"]
