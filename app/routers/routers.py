@@ -27,11 +27,6 @@ tutor_service = AgentService(client=AgnoClient())
 logging = _logger_method(file_handeler="monitor/ai_endpoint")
 
 
-@router.get("/")
-def home():
-    return {"message": "server is healthy to start"}
-
-
 @router.post("/tutor_respones")
 @limiter.limit("10/minute")
 async def main(request: Request, query: str) -> AsyncGenerator[AgentSchema, None]:

@@ -15,4 +15,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.get("/")
+def home():
+    return {"message": "server is healthy to start"}
+
+
 app.include_router(router=routers.router, prefix="/app/v1")
